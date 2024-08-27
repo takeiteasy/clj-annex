@@ -4,7 +4,12 @@ Small clojure utility that incorperates namepsaces into another namespace, based
 
 ## Usage
 
+```
+[org.clojars.takeiteasy/clj-annex "0.1.0-SNAPSHOT"]
+```
+
 Inside of `test-library-c`, `test-library-a` and `test-library-b` are annexed
+
 ```clojure
 (ns clj-annex.test-lib-c
   (:require [clj-annex.core :refer :all]))

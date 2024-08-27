@@ -1,0 +1,50 @@
+# clj-annex
+
+Small clojure utility that incorperates namepsaces into another namespace, based off [this post](https://stackoverflow.com/a/15617624)
+
+## Usage
+
+Inside of `test-library-c`, `test-library-a` and `test-library-b` are annexed
+```clojure
+(ns clj-annex.test-lib-c
+  (:require [clj-annex.core :refer :all]))
+
+(annex-ns 'clj-annex.test-lib-a 'clj-annex.test-lib-b)
+```
+
+`test-library-c` is required in the test and the functions `hello-from-a` and `hello-from-b` are forwarded from their respective lib
+
+```clojure
+(ns clj-annex.core-test
+  (:require [clj-annex.test-lib-c :as test]))
+
+(test/hello-from-a)
+(test/hello-from-b)
+```
+
+## License
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2024 George Watson
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
